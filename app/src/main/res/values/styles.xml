@@ -1,0 +1,86 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!--toolbar菜单项图标的颜色-->
+        <item name="android:textColorSecondary">@android:color/white</item>
+        <!--修改searchView样式-->
+        <item name="searchViewStyle">@style/SearchViewStyle</item>
+        <item name="android:actionMenuTextColor">@android:color/white</item>
+
+
+    </style>
+
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="searchHintIcon">@null</item>
+    </style>
+
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="overlapAnchor">false</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="nodata_bluebuttonbottom">
+        <item name="android:textSize">@dimen/res_textsize_15sp</item>
+        <item name="android:textColor">@color/blue_text_007dff</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/no_wifi_setting_button</item>
+    </style>
+
+    <dimen name="res_textsize_15sp">15sp</dimen>
+
+    <style name="bottom_select">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@drawable/rb_select_textcolor</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:drawablePadding">5dp</item>
+    </style>
+
+    <style name="text_natrue">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/dp_10</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+    </style>
+
+
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/my_bround_bg"
+    android:gravity="center_vertical"
+    android:paddingLeft="10dp"
+    android:textColor="@color/black"
+    android:textSize="18sp"
+
+    <style name="my_fragment_text">
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:background">@drawable/my_bround_bg</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+</resources>

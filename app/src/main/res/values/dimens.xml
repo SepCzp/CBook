@@ -1,0 +1,9 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="res_textsize_13sp">13sp</dimen>
+    <dimen name="alertDialog_width">324dp</dimen>
+    <dimen name="wifi_setting_height">40dp</dimen>
+    <dimen name="wifi_setting_bottom">16dp</dimen>
+    <dimen name="wifi_setting_lef">16dp</dimen>
+    <dimen name="wifi_setting_right">16dp</dimen>
+</resources>

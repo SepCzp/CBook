@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    tools:context="com.example.czp.cookbook.ui.activity.CookDetailActivity">
+
+    <include layout="@layout/title"></include>
+
+    <com.example.czp.cookbook.ui.view.DropDownImage
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_cook_icon"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:scaleType="centerCrop"
+                android:transitionName="nice" />
+
+
+            <TextView
+                android:id="@+id/tv_peoplenum"
+                style="@style/text_natrue"
+                android:text="食用人数："
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_cookingtime"
+                style="@style/text_natrue"
+                android:text="烹煮时间："
+                android:textColor="@color/black" />
+
+            <TextView
+                style="@style/text_natrue"
+                android:text="介绍："
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_content"
+                style="@style/text_natrue" />
+
+            <TextView
+                android:id="@+id/tv_tag"
+                style="@style/text_natrue"
+                android:text="ssssssss"
+                android:textColor="@color/black" />
+
+            <TextView
+                style="@style/text_natrue"
+                android:text="用料"
+                android:textColor="@color/black" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_margin="@dimen/dp_10"
+                android:background="@color/black" />
+
+            <LinearLayout
+                android:id="@+id/ll_material"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_10"
+                android:orientation="vertical"></LinearLayout>
+
+            <TextView
+                style="@style/text_natrue"
+                android:text="做法"
+                android:textColor="@color/black" />
+
+            <LinearLayout
+                android:id="@+id/ll_practice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_10"
+                android:orientation="vertical"></LinearLayout>
+
+        </LinearLayout>
+
+    </com.example.czp.cookbook.ui.view.DropDownImage>
+
+
+</LinearLayout>

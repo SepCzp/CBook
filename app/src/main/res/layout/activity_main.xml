@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.czp.cookbook.ui.activity.MainActivity">
+
+    <include
+        android:id="@+id/id_title"
+        layout="@layout/title1" />
+
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"></FrameLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@android:color/black" />
+
+    <RadioGroup
+        android:id="@+id/rg_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb1"
+            style="@style/bottom_select"
+            android:drawableTop="@drawable/cookbook_select_icon"
+            android:text="菜谱" />
+
+        <RadioButton
+            android:id="@+id/rb2"
+            style="@style/bottom_select"
+            android:drawableTop="@drawable/classify_select_icon"
+            android:text="分类" />
+
+        <RadioButton
+            android:id="@+id/rb3"
+            style="@style/bottom_select"
+            android:drawableTop="@drawable/my_select_icon"
+            android:text="个人"
+            android:textColor="@drawable/rb_select_textcolor" />
+
+    </RadioGroup>
+
+
+</LinearLayout>

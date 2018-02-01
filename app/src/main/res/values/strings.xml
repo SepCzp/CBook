@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Cookbook</string>
+    <string name="title_activity_welcome">WelcomeActivity</string>
+    <string name="loading">加载中,请稍后...</string>
+    <string name="no_available_network">网络未连接，请点击重试</string>
+    <string name="setting_network">设置网络</string>
+    <!--%N代表第N个参数，如%3代表的是第三个参数；
+    $是结束符；
+    d/s/.2f代表的是整数/字符串/保留2位小数点的浮点数-->
+    <string name="test">吃鸡杀%1$d</string>
+</resources>

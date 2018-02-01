@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_collect"
+        style="@style/my_fragment_text"
+        android:drawableLeft="@mipmap/collect"
+        android:drawablePadding="5dp"
+        android:text="收藏" />
+
+    <TextView
+        android:id="@+id/browse"
+        style="@style/my_fragment_text"
+        android:text="浏览记录"
+        android:drawablePadding="5dp"
+        android:drawableLeft="@mipmap/sc"
+        />
+
+</LinearLayout>

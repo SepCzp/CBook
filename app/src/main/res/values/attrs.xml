@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="IndicatorView">
+
+        <attr name="radio" format="dimension"></attr>
+        <attr name="count" format="integer"></attr>
+
+    </declare-styleable>
+
+</resources>
