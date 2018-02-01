@@ -87,6 +87,7 @@ public class SearchRuselfActivity extends BaseMvpActivity<SreachPrenseterImpl>
         }else {
             mPresenter.searchData(name,count);
         }
+
     }
 
     @Override
@@ -97,7 +98,6 @@ public class SearchRuselfActivity extends BaseMvpActivity<SreachPrenseterImpl>
 
     @Override
     public void getData(List<SearchBean.ResultBean.ListBean> bean) {
-        this.searchBeen = bean;
         adapter = new SearchAdapter(this, bean);
         rv_result.setLayoutManager(new LinearLayoutManager(this));
         rv_result.setAdapter(adapter);
@@ -121,7 +121,6 @@ public class SearchRuselfActivity extends BaseMvpActivity<SreachPrenseterImpl>
     @Override
     public void errorToast(String error) {
         showToast(error);
-
     }
 
     /**

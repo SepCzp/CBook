@@ -19,6 +19,9 @@
         <item name="searchHintIcon">@null</item>
     </style>
 
+    <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <item name="actionMenuTextColor">@color/white</item> <!--  敲定颜色-->
+    </style>
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
@@ -57,18 +60,6 @@
         <item name="android:textSize">18sp</item>
         <item name="android:layout_marginLeft">10dp</item>
     </style>
-
-
-    android:layout_width="match_parent"
-    android:layout_height="40dp"
-    android:layout_marginLeft="20dp"
-    android:layout_marginRight="20dp"
-    android:layout_marginTop="10dp"
-    android:background="@drawable/my_bround_bg"
-    android:gravity="center_vertical"
-    android:paddingLeft="10dp"
-    android:textColor="@color/black"
-    android:textSize="18sp"
 
     <style name="my_fragment_text">
 

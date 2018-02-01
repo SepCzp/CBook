@@ -3,7 +3,6 @@ package com.example.czp.cookbook.mvp.presenter.impl;
 import com.example.czp.cookbook.api.RxManager;
 import com.example.czp.cookbook.mvp.model.bean.CookDetailBean;
 import com.example.czp.cookbook.mvp.model.dao.CollectDao;
-import com.example.czp.cookbook.mvp.model.dao.CollectTable;
 import com.example.czp.cookbook.mvp.presenter.CollectPrenseter;
 import com.example.czp.cookbook.mvp.view.CollectView;
 
@@ -44,7 +43,7 @@ public class CollectPrenseterImpl extends BasePrenseterImpl<CollectView> impleme
 
     @Override
     public void delete(String tableName, CollectDao dao) {
-        Observable.just(dao.delete(CollectTable.TABLE_NAME))
+        Observable.just(dao.delete(tableName))
                 .compose(RxManager.<Integer>rxSchedulerHelper())
                 .subscribe(new Consumer<Integer>() {
                     @Override

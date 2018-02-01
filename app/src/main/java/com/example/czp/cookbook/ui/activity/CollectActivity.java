@@ -124,9 +124,15 @@ public class CollectActivity extends BaseMvpActivity<CollectPrenseterImpl> imple
 
             if (type.equals("collect")) {
                 mPresenter.delete(CollectTable.TABLE_NAME, dao);
+                adapter.getData().clear();
+                adapter.notifyDataSetChanged();
+
             } else {
                 mPresenter.delete(BrowseTable.TABLE_NAME, dao);
+                adapter.getData().clear();
+                adapter.notifyDataSetChanged();
             }
+
         }
         return super.onOptionsItemSelected(item);
     }

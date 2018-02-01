@@ -44,7 +44,9 @@
                 app:contentInsetStartWithNavigation="0dp"
                 app:layout_collapseMode="pin"
                 app:navigationIcon="@drawable/ic_arrow_back_white"
-                app:popupTheme="@style/AppTheme.NoActionBar">
+                app:popupTheme="@style/AppTheme.NoActionBar"
+                app:theme="@style/AppTheme.NoActionBar"
+                >
 
             </android.support.v7.widget.Toolbar>
 

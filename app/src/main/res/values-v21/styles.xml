@@ -4,9 +4,6 @@
     <style name="CompatAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowFullscreen">false</item>
-        <item name="android:windowActionBar">false</item>
-        <item name="windowActionModeOverlay">true</item>
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <!--toolbar菜单项图标的颜色-->
         <item name="android:textColorSecondary">@android:color/white</item>
