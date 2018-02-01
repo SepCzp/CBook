@@ -35,8 +35,8 @@ public class SearchRuselfActivity extends BaseMvpActivity<SreachPrenseterImpl>
     RecyclerView rv_result;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-//    @BindView(R.id.tv_title)
-//    TextView tv_title;
+    @BindView(R.id.tv_title)
+    TextView tv_title;
 //    @BindView(R.id.img_back)
 //    ImageView img_back;
 //    @BindView(R.id.ed_search)
@@ -65,7 +65,7 @@ public class SearchRuselfActivity extends BaseMvpActivity<SreachPrenseterImpl>
         toolbar.setTitleTextColor(Color.WHITE);
         toolbar.setContentInsetStartWithNavigation(0);
         setStatus();
-//        tv_title.setVisibility(View.GONE);
+        tv_title.setVisibility(View.GONE);
 //        img_back.setVisibility(View.VISIBLE);
 //        ed_search.setVisibility(View.VISIBLE);
 //        tv_search.setVisibility(View.VISIBLE);
