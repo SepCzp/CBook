@@ -31,7 +31,8 @@ import butterknife.BindView;
  * function:
  */
 
-public class CookDetailActivity extends BaseMvpActivity<CookDetailImpl> implements ResultDataView<CookDetailBean> {
+public class CookDetailActivity extends BaseMvpActivity<CookDetailImpl>
+        implements ResultDataView<CookDetailBean> {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;

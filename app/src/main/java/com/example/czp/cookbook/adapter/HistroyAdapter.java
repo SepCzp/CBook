@@ -16,6 +16,9 @@ import java.util.List;
 
 public class HistroyAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
 
+    public HistroyAdapter(){
+        super(R.layout.recycle_histroy_item);
+    }
 
     public HistroyAdapter(@Nullable List<String> data) {
         super(R.layout.recycle_histroy_item, data);

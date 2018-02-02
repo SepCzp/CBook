@@ -35,6 +35,7 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
         converView = itemView;
     }
 
+
     public <V extends View> V getView(@IdRes int viewId) {
         View view = views.get(viewId);
         if (view == null) {

@@ -43,9 +43,10 @@ public class SearchActivity extends BaseActivity {
     protected void initData() {
         super.initData();
 
-        adapter = new HistroyAdapter(list);
+        adapter = new HistroyAdapter();
         recycle_history.setAdapter(adapter);
         recycle_history.setLayoutManager(new LinearLayoutManager(this));
+        recycle_history.setAdapter(adapter);
         adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
@@ -57,15 +58,17 @@ public class SearchActivity extends BaseActivity {
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        list = SpUtils.getInstance().getDataList(SEARCH_HISTORY, String.class);
+    protected void onResume() {
+        super.onResume();
+
         adapter.getData().clear();
+        list = SpUtils.getInstance().getDataList(SEARCH_HISTORY, String.class);
         adapter.addData(list);
-        if (list.size() > 0) {
+        if (list.size() > 0 && adapter.getHeaderLayoutCount() == 0) {
             adapter.addHeaderView(addHead());
             adapter.addFooterView(addFoot());
         }
+
         adapter.notifyDataSetChanged();
     }
 
@@ -112,14 +115,10 @@ public class SearchActivity extends BaseActivity {
         if (TextUtils.isEmpty(trim)) {
             Toast.makeText(SearchActivity.this, "搜索内容为空", Toast.LENGTH_SHORT).show();
         } else {
-            if (list.size() == 0) {
+
+            if (!list.contains(trim)) {
                 list.add(trim);
                 SpUtils.getInstance().saveList(list, SEARCH_HISTORY);
-            } else {
-                if (!list.contains(trim)) {
-                    list.add(trim);
-                    SpUtils.getInstance().saveList(list, SEARCH_HISTORY);
-                }
             }
 
             Intent intent = new Intent();
@@ -145,14 +144,19 @@ public class SearchActivity extends BaseActivity {
             public void onClick(View v) {
                 adapter.getData().clear();
                 adapter.notifyDataSetChanged();
+                SpUtils.getInstance().remove(SEARCH_HISTORY);
+                list.clear();
                 adapter.removeAllFooterView();
                 adapter.removeAllHeaderView();
-                SpUtils.getInstance().remove(SEARCH_HISTORY);
             }
         });
         return view;
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
 
     @Override
     protected int layoutResID() {
