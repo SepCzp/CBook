@@ -42,15 +42,10 @@ public class SearchActivity extends BaseActivity {
     @Override
     protected void initData() {
         super.initData();
-        list = SpUtils.getInstance().getDataList(SEARCH_HISTORY, String.class);
+
         adapter = new HistroyAdapter(list);
         recycle_history.setAdapter(adapter);
         recycle_history.setLayoutManager(new LinearLayoutManager(this));
-        if (list.size() > 0) {
-            adapter.addHeaderView(addHead());
-            adapter.addFooterView(addFoot());
-        }
-
         adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
@@ -67,6 +62,10 @@ public class SearchActivity extends BaseActivity {
         list = SpUtils.getInstance().getDataList(SEARCH_HISTORY, String.class);
         adapter.getData().clear();
         adapter.addData(list);
+        if (list.size() > 0) {
+            adapter.addHeaderView(addHead());
+            adapter.addFooterView(addFoot());
+        }
         adapter.notifyDataSetChanged();
     }
 
