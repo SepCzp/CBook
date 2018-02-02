@@ -25,11 +25,11 @@ public class IndicatorView extends View {
     private Paint paint;
 
     public IndicatorView(Context context) {
-        this(context,null);
+        this(context, null);
     }
 
     public IndicatorView(Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs,0);
+        this(context, attrs, 0);
     }
 
     public IndicatorView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -37,6 +37,8 @@ public class IndicatorView extends View {
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.IndicatorView);
         radius = (int) array.getDimension(R.styleable.IndicatorView_radio, 3);
         count = array.getInteger(R.styleable.IndicatorView_count, 5);
+
+        array.recycle();
     }
 
     {
@@ -57,7 +59,7 @@ public class IndicatorView extends View {
                 canvas.drawCircle(startW + (radius * 2) * (i) + interval * (i), startH, radius, paint);
             } else {
                 paint.setColor(Color.WHITE);
-                canvas.drawCircle(startW + (radius * 2) *(i) + interval * (i), startH, radius, paint);
+                canvas.drawCircle(startW + (radius * 2) * (i) + interval * (i), startH, radius, paint);
             }
         }
     }
