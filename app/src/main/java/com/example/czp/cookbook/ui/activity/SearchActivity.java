@@ -61,7 +61,6 @@ public class SearchActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
 
-        adapter.getData().clear();
         list = SpUtils.getInstance().getDataList(SEARCH_HISTORY, String.class);
         adapter.addData(list);
         if (list.size() > 0 && adapter.getHeaderLayoutCount() == 0) {
