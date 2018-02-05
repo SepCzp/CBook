@@ -20,6 +20,11 @@ import java.util.List;
 public class SearchAdapter extends BaseQuickAdapter<SearchBean.ResultBean.ListBean, BaseViewHolder> {
     private Context context;
 
+    public SearchAdapter(Context context) {
+        super(R.layout.recycle_result_item);
+        this.context = context;
+        openLoadAnimation();
+    }
 
     public SearchAdapter(Context context, List<SearchBean.ResultBean.ListBean> data) {
         super(R.layout.recycle_result_item, data);

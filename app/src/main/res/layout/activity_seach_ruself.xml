@@ -9,13 +9,21 @@
 
     <include layout="@layout/title1" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_result"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="5dp"></android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent">
 
-    <include layout="@layout/recyce_empty"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_result"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"></android.support.v7.widget.RecyclerView>
+
+        <include layout="@layout/recyce_empty"/>
+
+    </FrameLayout>
+
+
 
 
 

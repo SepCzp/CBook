@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -37,8 +38,8 @@ public class SearchRuselfActivity extends BaseMvpActivity<SreachPrenseterImpl>
     Toolbar toolbar;
     @BindView(R.id.tv_title)
     TextView tv_title;
-//    @BindView(R.id.img_back)
-//    ImageView img_back;
+    @BindView(R.id.rl_empty)
+    RelativeLayout rl_empty;
 //    @BindView(R.id.ed_search)
 //    EditText ed_search;
 //    @BindView(R.id.tv_search)
@@ -82,23 +83,13 @@ public class SearchRuselfActivity extends BaseMvpActivity<SreachPrenseterImpl>
             classid = intent.getStringExtra("classid");
         }
         initToolBar(toolbar, name);
-        if(TextUtils.isEmpty(classid)){
+        if (TextUtils.isEmpty(classid)) {
             mPresenter.searchData(name, 20);
-        }else {
-            mPresenter.searchData(name,count);
+        } else {
+            mPresenter.searchData(name, count);
         }
 
-    }
-
-    @Override
-    protected SreachPrenseterImpl injectPrenseter() {
-        return SreachPrenseterImpl.newInstance();
-    }
-
-
-    @Override
-    public void getData(List<SearchBean.ResultBean.ListBean> bean) {
-        adapter = new SearchAdapter(this, bean);
+        adapter = new SearchAdapter(this);
         rv_result.setLayoutManager(new LinearLayoutManager(this));
         rv_result.setAdapter(adapter);
         adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
@@ -112,6 +103,19 @@ public class SearchRuselfActivity extends BaseMvpActivity<SreachPrenseterImpl>
                 goActivityData(intent, CookDetailActivity.class, compat.toBundle());
             }
         });
+
+    }
+
+    @Override
+    protected SreachPrenseterImpl injectPrenseter() {
+        return SreachPrenseterImpl.newInstance();
+    }
+
+
+    @Override
+    public void getData(List<SearchBean.ResultBean.ListBean> bean) {
+        rl_empty.setVisibility(View.GONE);
+        adapter.addData(bean);
         if (!isSearch && !TextUtils.isEmpty(classid)) {
             adapter.setOnLoadMoreListener(this, rv_result);
         }
@@ -121,6 +125,7 @@ public class SearchRuselfActivity extends BaseMvpActivity<SreachPrenseterImpl>
     @Override
     public void errorToast(String error) {
         showToast(error);
+        rl_empty.setVisibility(View.VISIBLE);
     }
 
     /**
