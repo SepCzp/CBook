@@ -37,7 +37,6 @@ public abstract class MyBaseAdapter<T> extends RecyclerView.Adapter<BaseViewHold
     }
 
 
-
     public abstract void convert(BaseViewHolder holder, T data, int position);
 
     @Override

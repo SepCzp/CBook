@@ -44,8 +44,7 @@
                 app:layout_collapseMode="pin"
                 app:navigationIcon="@drawable/ic_arrow_back_white"
                 app:popupTheme="@style/AppTheme.NoActionBar"
-                app:theme="@style/AppTheme.NoActionBar"
-                >
+                app:theme="@style/AppTheme.NoActionBar">
 
             </android.support.v7.widget.Toolbar>
 
@@ -59,8 +58,8 @@
         android:id="@+id/nest_scroll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scrollbars="none"
         android:background="@android:color/white"
+        android:scrollbars="none"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
@@ -87,15 +86,15 @@
                 android:textColor="@color/black" />
 
             <!--<TextView-->
-                <!--android:id="@+id/tv_content"-->
-                <!--style="@style/text_natrue" />-->
+            <!--android:id="@+id/tv_content"-->
+            <!--style="@style/text_natrue" />-->
 
             <com.example.czp.cookbook.ui.view.FoldingTextView
                 android:id="@+id/fold_text"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp" />
 
             <TextView
                 android:id="@+id/tv_tag"

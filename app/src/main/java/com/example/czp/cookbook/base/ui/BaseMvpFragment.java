@@ -26,6 +26,12 @@ public abstract class BaseMvpFragment<P extends BasePrenseter> extends BaseFragm
     protected abstract P injectPrenseter();
 
     @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
         if (mPrenseter != null) {

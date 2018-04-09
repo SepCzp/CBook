@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">菜谱</string>
+    <string name="app_name">cookbook</string>
     <string name="title_activity_welcome">WelcomeActivity</string>
     <string name="loading">加载中,请稍后...</string>
     <string name="no_available_network">网络未连接，请点击重试</string>

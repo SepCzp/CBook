@@ -24,8 +24,9 @@ public class BasePrenseterImpl<V extends BaseView>
     public void detachView() {
         if (mView != null) {
             mView = null;
+            rxManager.unSubscribe();
         }
-        rxManager.unSubscribe();
+
     }
 
 }

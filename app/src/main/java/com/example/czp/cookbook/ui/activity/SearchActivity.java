@@ -61,7 +61,8 @@ public class SearchActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
 
-         list = SpUtils.getInstance().getDataList(SEARCH_HISTORY, String.class);
+        list = SpUtils.getInstance().getDataList(SEARCH_HISTORY, String.class);
+        adapter.getData().clear();
         adapter.addData(list);
         if (list.size() > 0 && adapter.getHeaderLayoutCount() == 0) {
             adapter.addHeaderView(addHead());
@@ -144,7 +145,7 @@ public class SearchActivity extends BaseActivity {
                 adapter.getData().clear();
                 adapter.notifyDataSetChanged();
                 SpUtils.getInstance().remove(SEARCH_HISTORY);
-                list.clear();
+                //  list.clear();
                 adapter.removeAllFooterView();
                 adapter.removeAllHeaderView();
             }

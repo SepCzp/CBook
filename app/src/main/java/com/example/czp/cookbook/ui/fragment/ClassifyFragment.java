@@ -43,7 +43,6 @@ public class ClassifyFragment extends BaseMvpFragment<ClassifyPrenseterImpl>
 
     @Override
     protected void netWork() {
-        MyApplication.getRefWatcher().watch(this);
         mPrenseter.getClassifyNetWork();
     }
 
@@ -81,6 +80,12 @@ public class ClassifyFragment extends BaseMvpFragment<ClassifyPrenseterImpl>
         });
 
         return view;
+    }
+
+    @Override
+    public void initData() {
+        super.initData();
+
     }
 
     @Override

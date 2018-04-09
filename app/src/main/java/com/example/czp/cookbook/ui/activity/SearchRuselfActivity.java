@@ -18,6 +18,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.example.czp.cookbook.MyApplication;
 import com.example.czp.cookbook.R;
 import com.example.czp.cookbook.adapter.SearchAdapter;
 import com.example.czp.cookbook.base.ui.BaseMvpActivity;
@@ -116,7 +117,7 @@ public class SearchRuselfActivity extends BaseMvpActivity<SreachPrenseterImpl>
     public void getData(List<SearchBean.ResultBean.ListBean> bean) {
         rl_empty.setVisibility(View.GONE);
         adapter.addData(bean);
-        if (!isSearch && !TextUtils.isEmpty(classid)) {
+        if (!isSearch && !TextUtils.isEmpty(classid) || bean.size() > 10) {
             adapter.setOnLoadMoreListener(this, rv_result);
         }
 
@@ -202,5 +203,10 @@ public class SearchRuselfActivity extends BaseMvpActivity<SreachPrenseterImpl>
         return true;
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        MyApplication.getRefWatcher().watch(this);
 
+    }
 }

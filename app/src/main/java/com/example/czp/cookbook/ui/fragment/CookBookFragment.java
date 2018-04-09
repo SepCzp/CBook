@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.example.czp.cookbook.MyApplication;
 import com.example.czp.cookbook.R;
 import com.example.czp.cookbook.adapter.BoutiqueAdapter;
 import com.example.czp.cookbook.adapter.HotAdapter;
@@ -96,6 +97,7 @@ public class CookBookFragment extends BaseFragment implements ViewPager.OnPageCh
     @Override
     public void initData() {
         super.initData();
+
 
         pageAdpater = new MyPageAdpater(getContext());
         viewPager.setAdapter(pageAdpater);

@@ -32,4 +32,14 @@ public class NetWork {
         return retrofit.create(UrlApi.class);
     }
 
+    public static <T> T createApi(Class<T> cls,String url) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();
+        return retrofit.create(cls);
+    }
+
 }

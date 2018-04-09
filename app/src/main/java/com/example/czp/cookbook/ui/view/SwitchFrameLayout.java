@@ -96,7 +96,7 @@ public abstract class SwitchFrameLayout extends FrameLayout {
      * 请求网络失败view
      */
     private View creatErroeView() {
-        View view = UIUtils.inflate(getContext(), R.layout.loading_error_page);
+        View view = UIUtils.inflate(UIUtils.getContext(), R.layout.loading_error_page);
         view.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {

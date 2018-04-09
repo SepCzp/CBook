@@ -23,7 +23,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        mContext = this;
+        mContext = getApplicationContext();
         mHandler = new Handler();
         mainThreadid = Process.myTid();
         refWatcher = LeakCanary.install(this);
