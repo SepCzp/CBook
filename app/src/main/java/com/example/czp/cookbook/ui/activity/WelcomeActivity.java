@@ -38,6 +38,8 @@ public class WelcomeActivity extends BaseActivity {
             }
         });
 
+        setNoSkid(true);
+
         Observable.interval(1, TimeUnit.SECONDS)
                 .take(3)//计时三次
                 .map(new Function<Long, Long>() {

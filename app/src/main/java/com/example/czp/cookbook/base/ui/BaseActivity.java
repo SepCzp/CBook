@@ -7,16 +7,19 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
 import com.example.czp.cookbook.R;
+import com.example.czp.cookbook.ui.view.SwipeBackLayout;
 
 import java.lang.reflect.Field;
 
 import butterknife.ButterKnife;
+
 
 /**
  * Created by chenzipeng on 2018/1/17.
@@ -27,11 +30,13 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     private ViewGroup ll_status;
     private ViewGroup.LayoutParams params;
+    private SwipeBackLayout swipeBackLayout;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(layoutResID());
+        View view = LayoutInflater.from(this).inflate(layoutResID(), null, false);
+        this.setContentView(view);
         ButterKnife.bind(this);
         initView();
         initData();
@@ -69,6 +74,23 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
+    public void setContentView(final View v){
+        setContentView(R.layout.activity_base);
+        final View view = findViewById(R.id.btm_view);
+        swipeBackLayout = findViewById(R.id.swipeBack);
+        v.setBackgroundColor(getResources().getColor(R.color.white));
+        swipeBackLayout.addView(v);
+        swipeBackLayout.setMyOnScrollListener(new SwipeBackLayout.MyOnScrollListener() {
+            @Override
+            public void complete(float i) {
+                view.setAlpha(1-i);
+            }
+        });
+    }
+
+    public void setNoSkid(boolean noSkid) {
+        swipeBackLayout.setNoSkid(noSkid);
+    }
 
     protected abstract void initView();
 

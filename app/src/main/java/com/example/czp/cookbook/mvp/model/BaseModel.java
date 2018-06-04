@@ -6,5 +6,4 @@ package com.example.czp.cookbook.mvp.model;
  */
 
 public interface BaseModel<T> {
-
 }

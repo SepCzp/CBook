@@ -50,6 +50,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         id_title.setVisibility(View.GONE);
         FragmentUtils.addFragment(this, (CookBookFragment) fragments.get(0));
         rg_main.setOnCheckedChangeListener(this);
+        setNoSkid(true);
     }
 
     public void initFragments() {

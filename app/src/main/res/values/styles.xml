@@ -11,6 +11,9 @@
         <!--修改searchView样式-->
         <item name="searchViewStyle">@style/SearchViewStyle</item>
         <item name="android:actionMenuTextColor">@android:color/white</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
 
     </style>
 
