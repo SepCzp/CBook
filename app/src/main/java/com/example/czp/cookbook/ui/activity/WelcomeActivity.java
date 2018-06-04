@@ -30,12 +30,9 @@ public class WelcomeActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        img_wel.post(new Runnable() {
-            @Override
-            public void run() {
-                ViewGroup.LayoutParams params = img_wel.getLayoutParams();
-                params.height = img_wel.getHeight() + getStatusHeight();
-            }
+        img_wel.post(()->{
+            ViewGroup.LayoutParams params = img_wel.getLayoutParams();
+            params.height = img_wel.getHeight() + getStatusHeight();
         });
 
         setNoSkid(true);

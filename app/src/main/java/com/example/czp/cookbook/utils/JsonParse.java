@@ -4,7 +4,7 @@ package com.example.czp.cookbook.utils;
  * Created by chenzipeng on 2018/1/18.
  * function:
  */
-
+@Deprecated
 public class JsonParse {
 
 //    public static HttpMsg<ClassifyBean> parseClassifyBean(String json) {
