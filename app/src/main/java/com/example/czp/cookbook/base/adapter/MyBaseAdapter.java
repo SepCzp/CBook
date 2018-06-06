@@ -28,7 +28,7 @@ public abstract class MyBaseAdapter<T> extends RecyclerView.Adapter<BaseViewHold
 
     @Override
     public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return BaseViewHolder.creatHolderView(context, parent, layoutId);
+        return BaseViewHolder.creatHolderView(parent, layoutId);
     }
 
     @Override
@@ -43,7 +43,6 @@ public abstract class MyBaseAdapter<T> extends RecyclerView.Adapter<BaseViewHold
     public int getItemCount() {
         return data.size() > 0 ? data.size() : 0;
     }
-
 
     public void refresh(List<T> data) {
         if (data != null && data.size() > 0) {

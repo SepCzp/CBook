@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.czp.cookbook.MyApplication;
 import com.example.czp.cookbook.R;
 import com.example.czp.cookbook.base.ui.BaseMvpActivity;
@@ -113,7 +114,9 @@ public class CookDetailActivity extends BaseMvpActivity<CookDetailImpl>
             TextView tv_practice = view.findViewById(R.id.tv_practice);
             ImageView img_practice = view.findViewById(R.id.img_practice);
             tv_practice.setText(i + 1 + "  " + p.pcontent);
-            Glide.with(this).load(p.pic).override(500, 500).into(img_practice);
+            RequestOptions options = new RequestOptions();
+            options.override(500,500);
+            Glide.with(this).load(p.pic).apply(options).into(img_practice);
             ll_practice.addView(view);
         }
     }

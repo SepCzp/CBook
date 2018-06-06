@@ -129,6 +129,5 @@ public class SwipeBackLayout extends FrameLayout {
 
     public void setNoSkid(boolean noSkid) {
         isNoSkid = noSkid;
-        invalidate();
     }
 }

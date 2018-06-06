@@ -1,6 +1,5 @@
 package com.example.czp.cookbook.base.adapter;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.ColorInt;
@@ -27,9 +26,8 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
 
     private SparseArray<View> views;
     private View converView;
-    private Context context;
 
-    public BaseViewHolder(Context context, View itemView) {
+    public BaseViewHolder(View itemView) {
         super(itemView);
         views = new SparseArray<>();
         converView = itemView;
@@ -45,9 +43,9 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
         return (V) view;
     }
 
-    public static BaseViewHolder creatHolderView(Context context, ViewGroup parent, @LayoutRes int layoutId) {
-        View view = LayoutInflater.from(context).inflate(layoutId, parent, false);
-        BaseViewHolder viewHolder = new BaseViewHolder(context, view);
+    public static BaseViewHolder creatHolderView(ViewGroup parent, @LayoutRes int layoutId) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false);
+        BaseViewHolder viewHolder = new BaseViewHolder(view);
         return viewHolder;
     }
 

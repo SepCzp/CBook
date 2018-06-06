@@ -8,7 +8,6 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.czp.cookbook.R;
 import com.example.czp.cookbook.mvp.model.bean.SearchBean;
-import com.example.czp.cookbook.utils.GlideRoundTransform;
 
 import java.util.List;
 
@@ -35,7 +34,6 @@ public class SearchAdapter extends BaseQuickAdapter<SearchBean.ResultBean.ListBe
     @Override
     protected void convert(BaseViewHolder helper, SearchBean.ResultBean.ListBean item) {
         Glide.with(context).load(item.pic)
-                .transform(new GlideRoundTransform(context, 4))
                 .into((ImageView) helper.getView(R.id.img_greens));
         helper.setText(R.id.tv_greens_name, item.name);
         helper.setText(R.id.tv_content, item.content);

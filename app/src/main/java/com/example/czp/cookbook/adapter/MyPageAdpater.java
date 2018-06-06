@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.czp.cookbook.R;
 import com.example.czp.cookbook.utils.Constan;
 import com.example.czp.cookbook.utils.UIUtils;
@@ -31,7 +32,7 @@ public class MyPageAdpater extends PagerAdapter {
         ImageView img_banner = view.findViewById(R.id.img_banner);
         int count = position % Constan.ICON.length;
         Glide.with(context).load(Constan.ICON[count])
-                .centerCrop()
+                .apply(RequestOptions.centerCropTransform())
                 .into(img_banner);
         container.addView(view);
 

@@ -50,9 +50,10 @@ public class ClassifyMenuAdapter extends MyBaseAdapter<ClassifyBean.ResultBean> 
     }
 
     public void setBackgroudColor(int position) {
-        if (position != mSelect)
+        if (position != mSelect) {
             mSelect = position;
-        notifyDataSetChanged();
+            notifyDataSetChanged();
+        }
     }
 
     public void setListener(OnItemClick listener) {
