@@ -2,6 +2,7 @@ package com.example.czp.cookbook.ui.activity;
 
 import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -74,7 +75,7 @@ public class CollectActivity extends BaseMvpActivity<CollectPrenseterImpl> imple
     public void queryData(List<CookDetailBean.ResultBean> data) {
         adapter = new CollectAdapter(CollectActivity.this, data, type.equals("collect"));
         GridLayoutManager gridLayoutManager = new GridLayoutManager(CollectActivity.this, 2);
-        recyclerView.setLayoutManager(gridLayoutManager);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
         adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
@@ -135,5 +136,10 @@ public class CollectActivity extends BaseMvpActivity<CollectPrenseterImpl> imple
 
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

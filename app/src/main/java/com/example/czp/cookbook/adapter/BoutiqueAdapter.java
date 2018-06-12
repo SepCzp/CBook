@@ -24,7 +24,6 @@ public class BoutiqueAdapter extends BaseQuickAdapter<BoutiqueBean, BaseViewHold
     public BoutiqueAdapter(Context context, @Nullable List<BoutiqueBean> data) {
         super(R.layout.collect_item, data);
         this.context = context;
-
     }
 
     @Override

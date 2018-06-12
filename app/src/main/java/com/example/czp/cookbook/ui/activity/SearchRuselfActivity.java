@@ -5,11 +5,9 @@ import android.graphics.Color;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,10 +16,11 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.czp.cookbook.MyApplication;
 import com.example.czp.cookbook.R;
 import com.example.czp.cookbook.adapter.SearchAdapter;
+import com.example.czp.cookbook.base.adapter.BRecyclerView;
+import com.example.czp.cookbook.base.adapter.BaseAdapter;
 import com.example.czp.cookbook.base.ui.BaseMvpActivity;
 import com.example.czp.cookbook.mvp.model.bean.SearchBean;
 import com.example.czp.cookbook.mvp.presenter.impl.SreachPrenseterImpl;
@@ -32,10 +31,10 @@ import java.util.List;
 import butterknife.BindView;
 
 public class SearchRuselfActivity extends BaseMvpActivity<SreachPrenseterImpl>
-        implements RefreshDataView<SearchBean.ResultBean.ListBean>, BaseQuickAdapter.RequestLoadMoreListener {
+        implements RefreshDataView<SearchBean.ResultBean.ListBean>,BaseAdapter.LoadMoreListener {
 
     @BindView(R.id.rv_result)
-    RecyclerView rv_result;
+    BRecyclerView rv_result;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.tv_title)
@@ -69,9 +68,6 @@ public class SearchRuselfActivity extends BaseMvpActivity<SreachPrenseterImpl>
         toolbar.setContentInsetStartWithNavigation(0);
         setStatus();
         tv_title.setVisibility(View.GONE);
-//        img_back.setVisibility(View.VISIBLE);
-//        ed_search.setVisibility(View.VISIBLE);
-//        tv_search.setVisibility(View.VISIBLE);
 
     }
 
@@ -92,18 +88,18 @@ public class SearchRuselfActivity extends BaseMvpActivity<SreachPrenseterImpl>
         }
 
         adapter = new SearchAdapter(this);
-        rv_result.setLayoutManager(new LinearLayoutManager(this));
-        rv_result.setAdapter(adapter);
-        adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
-            @Override
-            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                SearchBean.ResultBean.ListBean b = (SearchBean.ResultBean.ListBean) adapter.getData().get(position);
-                Intent intent = new Intent();
-                intent.putExtra("id", b.id + "");
-                ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation(SearchRuselfActivity.this
-                        , view.findViewById(R.id.img_greens), "nice");
-                goActivityData(intent, CookDetailActivity.class, compat.toBundle());
-            }
+        adapter.setLoadMoreListener(this);
+        adapter.openLoadMore();
+        rv_result.setLayoutManager(new LinearLayoutManager(this))
+                .setAdapter(adapter)
+                .setIsAllowedRefresh(false);
+        adapter.setOnItemClickListener((view,i)->{
+            SearchBean.ResultBean.ListBean b = adapter.getData().get(i);
+            Intent intent1 = new Intent();
+            intent.putExtra("id", b.id + "");
+            ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation(SearchRuselfActivity.this
+                    , view.findViewById(R.id.img_greens), "nice");
+            goActivityData(intent1, CookDetailActivity.class, compat.toBundle());
         });
 
     }
@@ -118,8 +114,10 @@ public class SearchRuselfActivity extends BaseMvpActivity<SreachPrenseterImpl>
     public void getData(List<SearchBean.ResultBean.ListBean> bean) {
         rl_empty.setVisibility(View.GONE);
         adapter.addData(bean);
-        if (!isSearch && !TextUtils.isEmpty(classid) || bean.size() > 10) {
-            adapter.setOnLoadMoreListener(this, rv_result);
+        if (!isSearch && !TextUtils.isEmpty(classid) || bean.size() >=10) {
+            adapter.openLoadMore();
+        }else {
+            adapter.loadMoreEnd();
         }
 
     }
@@ -146,10 +144,10 @@ public class SearchRuselfActivity extends BaseMvpActivity<SreachPrenseterImpl>
     @Override
     public void loadMore(List<SearchBean.ResultBean.ListBean> data) {
         if (data.size() == 0) {
+            adapter.loadMoreEnd();
             return;
-        } else {
-            adapter.addData(data);
         }
+        adapter.addData(data);
         adapter.loadMoreComplete();
 
     }
@@ -162,15 +160,15 @@ public class SearchRuselfActivity extends BaseMvpActivity<SreachPrenseterImpl>
     @Override
     public void loadMoreError(String error) {
         showToast(error);
-        adapter.loadMoreComplete();
+        adapter.loadMoreFail();
     }
 
-
     @Override
-    public void onLoadMoreRequested() {
+    public void onLoadMore() {
         mPresenter.loadMore(Integer.parseInt(classid), start);
         start += 10;
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -215,4 +213,6 @@ public class SearchRuselfActivity extends BaseMvpActivity<SreachPrenseterImpl>
         MyApplication.getRefWatcher().watch(this);
 
     }
+
+
 }

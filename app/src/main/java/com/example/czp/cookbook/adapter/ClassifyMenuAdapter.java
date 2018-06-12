@@ -1,13 +1,10 @@
 package com.example.czp.cookbook.adapter;
 
-import android.content.Context;
 import android.graphics.Color;
-import android.view.View;
 
 import com.example.czp.cookbook.R;
+import com.example.czp.cookbook.base.adapter.BaseAdapter;
 import com.example.czp.cookbook.base.adapter.BaseViewHolder;
-import com.example.czp.cookbook.base.adapter.MyBaseAdapter;
-import com.example.czp.cookbook.listener.OnItemClick;
 import com.example.czp.cookbook.mvp.model.bean.ClassifyBean;
 
 import java.util.List;
@@ -17,28 +14,24 @@ import java.util.List;
  * function:
  */
 
-public class ClassifyMenuAdapter extends MyBaseAdapter<ClassifyBean.ResultBean> {
+public class ClassifyMenuAdapter extends BaseAdapter<ClassifyBean.ResultBean,BaseViewHolder> {
 
     public int mSelect = 0;
-    private OnItemClick listener;
 
-    public ClassifyMenuAdapter(Context context, List<ClassifyBean.ResultBean> data) {
-        super(context, R.layout.recycle_classify_item, data);
+    public ClassifyMenuAdapter(List<ClassifyBean.ResultBean> data) {
+        super(R.layout.recycle_classify_item, data);
+    }
+
+    public void setBackgroundColor(int position) {
+        if (position != mSelect) {
+            mSelect = position;
+            notifyDataSetChanged();
+        }
     }
 
     @Override
-    public void convert(final BaseViewHolder holder, final ClassifyBean.ResultBean data, final int position) {
-        holder.setText(R.id.tv_name, data.name);
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setBackgroudColor(position);
-                if (listener != null) {
-                    listener.itemClick(v, position);
-                }
-            }
-        });
+    public void convert(BaseViewHolder holder, int position) {
+        holder.setText(R.id.tv_name, data.get(position).name);
 
         if (mSelect == position) {
             holder.setTextColor(R.id.tv_name, Color.parseColor("#fa4301"));
@@ -47,16 +40,5 @@ public class ClassifyMenuAdapter extends MyBaseAdapter<ClassifyBean.ResultBean> 
             holder.setTextColor(R.id.tv_name, Color.BLACK);
             holder.itemView.setBackgroundColor(Color.parseColor("#cacaca"));
         }
-    }
-
-    public void setBackgroudColor(int position) {
-        if (position != mSelect) {
-            mSelect = position;
-            notifyDataSetChanged();
-        }
-    }
-
-    public void setListener(OnItemClick listener) {
-        this.listener = listener;
     }
 }

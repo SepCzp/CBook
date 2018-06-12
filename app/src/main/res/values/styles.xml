@@ -76,4 +76,9 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">22sp</item>
     </style>
+
+
+    <declare-styleable name="BRecyclerView">
+        <attr name="refresh_color" format="color"/>
+    </declare-styleable>
 </resources>

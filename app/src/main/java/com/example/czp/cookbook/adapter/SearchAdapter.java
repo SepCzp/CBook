@@ -4,9 +4,8 @@ import android.content.Context;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.czp.cookbook.R;
+import com.example.czp.cookbook.base.adapter.BaseAdapter;
 import com.example.czp.cookbook.mvp.model.bean.SearchBean;
 
 import java.util.List;
@@ -16,31 +15,28 @@ import java.util.List;
  * function:
  */
 
-public class SearchAdapter extends BaseQuickAdapter<SearchBean.ResultBean.ListBean, BaseViewHolder> {
+public class SearchAdapter extends BaseAdapter<SearchBean.ResultBean.ListBean, com.example.czp.cookbook.base.adapter.BaseViewHolder> {
     private Context context;
 
     public SearchAdapter(Context context) {
         super(R.layout.recycle_result_item);
         this.context = context;
-        openLoadAnimation();
     }
 
     public SearchAdapter(Context context, List<SearchBean.ResultBean.ListBean> data) {
         super(R.layout.recycle_result_item, data);
         this.context = context;
-        openLoadAnimation();
     }
+
 
     @Override
-    protected void convert(BaseViewHolder helper, SearchBean.ResultBean.ListBean item) {
+    public void convert(com.example.czp.cookbook.base.adapter.BaseViewHolder holder, int position) {
+        SearchBean.ResultBean.ListBean item = data.get(position);
         Glide.with(context).load(item.pic)
-                .into((ImageView) helper.getView(R.id.img_greens));
-        helper.setText(R.id.tv_greens_name, item.name);
-        helper.setText(R.id.tv_content, item.content);
-        helper.setText(R.id.tv_tag, item.tag);
+                .into((ImageView) holder.getView(R.id.img_greens));
+        holder.setText(R.id.tv_greens_name, item.name);
+        holder.setText(R.id.tv_content, item.content);
+        holder.setText(R.id.tv_tag, item.tag);
 
-        helper.addOnClickListener(R.id.cardview);
     }
-
-
 }

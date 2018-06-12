@@ -26,7 +26,7 @@ public abstract class BaseMvpActivity<P extends BasePrenseter> extends
 
     @Override
     public void showToast(String str) {
-        Toast.makeText(this, str+"", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), str+"", Toast.LENGTH_SHORT).show();
     }
 
     @Override

@@ -6,12 +6,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.example.czp.cookbook.MyApplication;
 import com.example.czp.cookbook.R;
 import com.example.czp.cookbook.adapter.ClassifyMenuAdapter;
 import com.example.czp.cookbook.adapter.ClassifySortAdapter;
+import com.example.czp.cookbook.base.adapter.BaseAdapter;
 import com.example.czp.cookbook.base.ui.BaseMvpFragment;
-import com.example.czp.cookbook.listener.OnItemClick;
 import com.example.czp.cookbook.mvp.model.bean.ClassifyBean;
 import com.example.czp.cookbook.mvp.presenter.impl.ClassifyPrenseterImpl;
 import com.example.czp.cookbook.mvp.view.ResultDataView;
@@ -51,33 +50,37 @@ public class ClassifyFragment extends BaseMvpFragment<ClassifyPrenseterImpl>
         View view = UIUtils.inflate(getActivity(),R.layout.fragment_classify_data);
         ButterKnife.bind(this, view);
 
-        classifyMenuAdapter = new ClassifyMenuAdapter(getContext(), bean);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        rv_mainMenu.setLayoutManager(layoutManager);
+        classifyMenuAdapter = new ClassifyMenuAdapter(bean);
+        classifyMenuAdapter.closeLoadMoreFeatures();
+        rv_mainMenu.setLayoutManager(new LinearLayoutManager(getContext()));
         rv_mainMenu.setAdapter(classifyMenuAdapter);
 
-        classifyMenuAdapter.setListener(new OnItemClick() {
+        classifyMenuAdapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
             @Override
-            public void itemClick(View view, int position) {
-                sortAdapter.refresh(bean.get(position).list);
+            public void itemClick(View v,int i) {
+                sortAdapter.setData(bean.get(i).list);
+                classifyMenuAdapter.setBackgroundColor(i);
             }
         });
-        sortAdapter = new ClassifySortAdapter(getContext(), bean.get(0).list);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
-        rv_sort.setLayoutManager(gridLayoutManager);
+
+
+
+        sortAdapter = new ClassifySortAdapter(bean.get(0).list);
+        sortAdapter.closeLoadMoreFeatures();
+        rv_sort.setLayoutManager(new GridLayoutManager(getContext(), 3));
         rv_sort.setAdapter(sortAdapter);
-        sortAdapter.setListener(new OnItemClick() {
+        sortAdapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
             @Override
-            public void itemClick(View view, int position) {
+            public void itemClick(View v,int i) {
                 List<ClassifyBean.ResultBean.ListBean> data = sortAdapter.getData();
-                ClassifyBean.ResultBean.ListBean listBean = data.get(position);
+                ClassifyBean.ResultBean.ListBean listBean = data.get(i);
                 Intent intent = new Intent();
                 intent.putExtra("name", listBean.name);
                 intent.putExtra("classid", listBean.classid);
                 mActivity.goActivityData(intent,SearchRuselfActivity.class);
             }
         });
+
 
         return view;
     }
