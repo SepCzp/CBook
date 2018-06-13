@@ -71,6 +71,9 @@ public class SwipeBackLayout extends FrameLayout {
             return false;
         }
 
+        /**
+         * 位置改变
+         * */
         @Override
         public void onViewPositionChanged(View changedView, int left, int top, int dx, int dy) {
             if (currentEdgeFlags == ViewDragHelper.EDGE_LEFT) {
@@ -83,6 +86,9 @@ public class SwipeBackLayout extends FrameLayout {
             }
         }
 
+        /**
+         * 释放
+         * */
         @Override
         public void onViewReleased(View releasedChild, float xvel, float yvel) {
             if (currentEdgeFlags == ViewDragHelper.EDGE_LEFT) {
@@ -95,6 +101,9 @@ public class SwipeBackLayout extends FrameLayout {
             }
         }
 
+        /**
+         *
+         * */
         @Override
         public void onEdgeDragStarted(int edgeFlags, int pointerId) {
             currentEdgeFlags = edgeFlags;

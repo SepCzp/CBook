@@ -30,7 +30,7 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class SearchRuselfActivity extends BaseMvpActivity<SreachPrenseterImpl>
+public class SearchResultActivity extends BaseMvpActivity<SreachPrenseterImpl>
         implements RefreshDataView<SearchBean.ResultBean.ListBean>,BaseAdapter.LoadMoreListener {
 
     @BindView(R.id.rv_result)
@@ -89,7 +89,6 @@ public class SearchRuselfActivity extends BaseMvpActivity<SreachPrenseterImpl>
 
         adapter = new SearchAdapter(this);
         adapter.setLoadMoreListener(this);
-        adapter.openLoadMore();
         rv_result.setLayoutManager(new LinearLayoutManager(this))
                 .setAdapter(adapter)
                 .setIsAllowedRefresh(false);
@@ -97,7 +96,7 @@ public class SearchRuselfActivity extends BaseMvpActivity<SreachPrenseterImpl>
             SearchBean.ResultBean.ListBean b = adapter.getData().get(i);
             Intent intent1 = new Intent();
             intent.putExtra("id", b.id + "");
-            ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation(SearchRuselfActivity.this
+            ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation(SearchResultActivity.this
                     , view.findViewById(R.id.img_greens), "nice");
             goActivityData(intent1, CookDetailActivity.class, compat.toBundle());
         });
@@ -124,6 +123,7 @@ public class SearchRuselfActivity extends BaseMvpActivity<SreachPrenseterImpl>
 
     @Override
     public void errorToast(String error) {
+        adapter.loadMoreComplete();
         showToast(error);
         rl_empty.setVisibility(View.VISIBLE);
     }

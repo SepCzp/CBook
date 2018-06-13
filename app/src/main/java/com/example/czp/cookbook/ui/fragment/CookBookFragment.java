@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.example.czp.cookbook.MyApplication;
 import com.example.czp.cookbook.R;
 import com.example.czp.cookbook.adapter.BoutiqueAdapter;
 import com.example.czp.cookbook.adapter.HotAdapter;
@@ -20,7 +19,7 @@ import com.example.czp.cookbook.base.ui.BaseFragment;
 import com.example.czp.cookbook.mvp.model.bean.BoutiqueBean;
 import com.example.czp.cookbook.ui.activity.CookDetailActivity;
 import com.example.czp.cookbook.ui.activity.SearchActivity;
-import com.example.czp.cookbook.ui.activity.SearchRuselfActivity;
+import com.example.czp.cookbook.ui.activity.SearchResultActivity;
 import com.example.czp.cookbook.ui.view.IndicatorView;
 import com.example.czp.cookbook.ui.view.SwitchFrameLayout;
 import com.example.czp.cookbook.utils.Constan;
@@ -130,7 +129,7 @@ public class CookBookFragment extends BaseFragment implements ViewPager.OnPageCh
                 Intent intent = new Intent();
                 intent.putExtra("classid", classid);
                 intent.putExtra("name", adapter.getData().get(position).toString());
-                mActivity.goActivityData(intent, SearchRuselfActivity.class);
+                mActivity.goActivityData(intent, SearchResultActivity.class);
             }
         });
 

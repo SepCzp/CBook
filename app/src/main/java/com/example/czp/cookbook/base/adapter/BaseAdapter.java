@@ -229,6 +229,8 @@ public abstract class BaseAdapter<T, VM extends BaseViewHolder> extends Recycler
         isOpenLoad = false;
     }
 
+
+
     @Override
     public int getItemCount() {
         return data.size() + getHeaderViewCount() + getFooterViewCount() + getLoadMoreSeat();

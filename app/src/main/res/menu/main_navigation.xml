@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/item1"
+        android:icon="@drawable/cookbook_select_icon"
+        android:title="菜谱"/>
+    <item
+        android:id="@+id/item2"
+        android:icon="@drawable/classify_select_icon"
+        android:title="分类"/>
+    <item
+        android:id="@+id/item3"
+        android:icon="@drawable/my_select_icon"
+        android:title="个人" />
+
+</menu>

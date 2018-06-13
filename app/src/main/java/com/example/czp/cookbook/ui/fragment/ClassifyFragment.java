@@ -14,7 +14,7 @@ import com.example.czp.cookbook.base.ui.BaseMvpFragment;
 import com.example.czp.cookbook.mvp.model.bean.ClassifyBean;
 import com.example.czp.cookbook.mvp.presenter.impl.ClassifyPrenseterImpl;
 import com.example.czp.cookbook.mvp.view.ResultDataView;
-import com.example.czp.cookbook.ui.activity.SearchRuselfActivity;
+import com.example.czp.cookbook.ui.activity.SearchResultActivity;
 import com.example.czp.cookbook.ui.view.SwitchFrameLayout;
 import com.example.czp.cookbook.utils.UIUtils;
 
@@ -77,7 +77,7 @@ public class ClassifyFragment extends BaseMvpFragment<ClassifyPrenseterImpl>
                 Intent intent = new Intent();
                 intent.putExtra("name", listBean.name);
                 intent.putExtra("classid", listBean.classid);
-                mActivity.goActivityData(intent,SearchRuselfActivity.class);
+                mActivity.goActivityData(intent,SearchResultActivity.class);
             }
         });
 

@@ -11,10 +11,13 @@
         <!--修改searchView样式-->
         <item name="searchViewStyle">@style/SearchViewStyle</item>
         <item name="android:actionMenuTextColor">@android:color/white</item>
+
+    </style>
+
+    <style name="otherAppTheme" parent="AppTheme">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
-
     </style>
 
     <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">

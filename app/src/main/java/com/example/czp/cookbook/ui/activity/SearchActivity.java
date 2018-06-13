@@ -52,7 +52,7 @@ public class SearchActivity extends BaseActivity {
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                 Intent intent = new Intent();
                 intent.putExtra("name", list.get(position));
-                goActivityData(intent, SearchRuselfActivity.class);
+                goActivityData(intent, SearchResultActivity.class);
             }
         });
     }
@@ -123,7 +123,7 @@ public class SearchActivity extends BaseActivity {
 
             Intent intent = new Intent();
             intent.putExtra("name", trim);
-            goActivityData(intent, SearchRuselfActivity.class);
+            goActivityData(intent, SearchResultActivity.class);
             ed_search.setText("");
         }
     }
