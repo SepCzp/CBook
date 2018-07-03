@@ -22,11 +22,9 @@ public class RxManager {
         disposable.add(d);
     }
 
-
     public void unSubscribe() {
         disposable.dispose();
     }
-
 
     public static <T> ObservableTransformer<T, T> rxSchedulerHelper() {
         return new ObservableTransformer<T, T>() {

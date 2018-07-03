@@ -1,14 +1,11 @@
 package com.example.czp.cookbook.ui.activity;
 
-import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -17,6 +14,7 @@ import com.example.czp.cookbook.base.ui.BaseActivity;
 import com.example.czp.cookbook.ui.fragment.ClassifyFragment;
 import com.example.czp.cookbook.ui.fragment.CookBookFragment;
 import com.example.czp.cookbook.ui.fragment.MyFragment;
+import com.example.czp.cookbook.utils.ActivityManager;
 import com.example.czp.cookbook.utils.FragmentUtils;
 
 import java.util.ArrayList;
@@ -39,6 +37,8 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+
+
         setStatus();
         initFragments();
         id_title.setVisibility(View.GONE);
@@ -69,7 +69,6 @@ public class MainActivity extends BaseActivity {
             }
         });
         setNoSkid(true);
-
     }
 
     public void initFragments() {
@@ -84,4 +83,10 @@ public class MainActivity extends BaseActivity {
         return R.layout.activity_main;
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ActivityManager.getInstance().removeActivity(this);
+
+    }
 }

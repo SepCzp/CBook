@@ -17,6 +17,7 @@ import android.view.inputmethod.InputMethodManager;
 
 import com.example.czp.cookbook.R;
 import com.example.czp.cookbook.ui.view.SwipeBackLayout;
+import com.example.czp.cookbook.utils.ActivityManager;
 import com.example.czp.cookbook.utils.StringUtils;
 
 import java.lang.reflect.Field;
@@ -56,6 +57,9 @@ public abstract class BaseActivity extends AppCompatActivity {
             }
 
         }
+
+        ActivityManager.getInstance().addActivity(this);
+
     }
 
     protected void initData() {
@@ -170,5 +174,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         inputMethodManager.showSoftInputFromInputMethod(this.getCurrentFocus().getWindowToken(), 0);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ActivityManager.getInstance().removeActivity(this);
 
+    }
 }

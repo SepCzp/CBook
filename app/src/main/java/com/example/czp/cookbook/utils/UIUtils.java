@@ -4,8 +4,10 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Process;
 import android.support.annotation.LayoutRes;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.example.czp.cookbook.MyApplication;
 
@@ -32,6 +34,21 @@ public class UIUtils {
         final float scale = getContext().getResources().getDisplayMetrics().density;
         return (int) (px / scale + 0.5f);
     }
+
+    public static int getScreenHeight(){
+        WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics dm=new DisplayMetrics();
+        wm.getDefaultDisplay().getMetrics(dm);
+        return dm.heightPixels;
+    }
+
+    public static int getScreenWidth(){
+        WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics dm=new DisplayMetrics();
+        wm.getDefaultDisplay().getMetrics(dm);
+        return dm.widthPixels;
+    }
+
 
     /**
      * 获取上下文
