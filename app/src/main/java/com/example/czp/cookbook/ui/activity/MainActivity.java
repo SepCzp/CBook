@@ -37,8 +37,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-
-
         setStatus();
         initFragments();
         id_title.setVisibility(View.GONE);

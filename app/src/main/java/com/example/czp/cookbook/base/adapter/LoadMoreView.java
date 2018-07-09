@@ -11,14 +11,14 @@ public class LoadMoreView {
 
     public static final int LOADING_STATE = 0;//
     public static final int FAIL_STATE = 1;//
-    public static final int END_STATE = 2;//
+    public static final int OVER_STATE = 2;//
     public static final int OTHER_STATE = 3;//
 
     public static final int LOADING_VIEW = R.id.load_more_loading_view;//
     public static final int FAIL_VIEW = R.id.load_more_fail_view;//
     public static final int EDD_VIEW = R.id.load_more_end_view;//
 
-    private int state = END_STATE;
+    private int state = OVER_STATE;//默认
 
     public void convert(BaseViewHolder holder) {
         switch (state) {
@@ -32,7 +32,7 @@ public class LoadMoreView {
                 visibleLoadFail(holder, true);
                 visibleLoadEnd(holder, false);
                 break;
-            case END_STATE:
+            case OVER_STATE:
                 visibleLoading(holder, false);
                 visibleLoadFail(holder, false);
                 visibleLoadEnd(holder, true);

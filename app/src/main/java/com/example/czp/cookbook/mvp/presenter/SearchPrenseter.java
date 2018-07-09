@@ -13,4 +13,6 @@ public interface SearchPrenseter extends BasePrenseter<RefreshDataView> {
 
 
     void loadMore(int classid, int start);
+
+    void refreshData(String name, int num);
 }

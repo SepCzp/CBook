@@ -57,6 +57,7 @@ public class BRecyclerView extends FrameLayout {
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.refresh_layout, this, false);
         swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout);
+        swipeRefreshLayout.setRefreshing(false);
         recyclerView = view.findViewById(R.id.recyclerView);
         swipeRefreshLayout.setProgressBackgroundColorSchemeColor(Color.WHITE);
         swipeRefreshLayout.setColorSchemeColors(color);

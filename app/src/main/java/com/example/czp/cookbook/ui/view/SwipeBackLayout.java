@@ -102,14 +102,23 @@ public class SwipeBackLayout extends FrameLayout {
         }
 
         /**
-         *
-         * */
+         * onEdgeTouched方法会在左边缘滑动的时候被调用
+         * @param edgeFlags 边缘状态
+         * @param pointerId
+         */
         @Override
         public void onEdgeDragStarted(int edgeFlags, int pointerId) {
             currentEdgeFlags = edgeFlags;
             helper.captureChildView(getChildAt(0), pointerId);
         }
 
+        /**
+         * 水平拖动
+         * @param child
+         * @param left
+         * @param dx
+         * @return
+         */
         @Override
         public int clampViewPositionHorizontal(View child, int left, int dx) {
             currentX = left > 0 ? left : 0;

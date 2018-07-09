@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface RefreshDataView<T> extends ResultDataView<T> {
 
-    void refreshData();
+    void refreshData(List<T> data);
 
     void loadMore(List<T> data);
 

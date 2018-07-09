@@ -31,7 +31,7 @@ import java.util.List;
 import butterknife.BindView;
 
 public class SearchResultActivity extends BaseMvpActivity<SreachPrenseterImpl>
-        implements RefreshDataView<SearchBean.ResultBean.ListBean>,BaseAdapter.LoadMoreListener {
+        implements RefreshDataView<SearchBean.ResultBean.ListBean>,BaseAdapter.LoadMoreListener, BRecyclerView.onRefreshListener {
 
     @BindView(R.id.rv_result)
     BRecyclerView rv_result;
@@ -82,16 +82,19 @@ public class SearchResultActivity extends BaseMvpActivity<SreachPrenseterImpl>
         }
         initToolBar(toolbar, name);
         if (TextUtils.isEmpty(classid)) {
-            mPresenter.searchData(name, 20);
+            mPresenter.searchData(name, 10);
         } else {
             mPresenter.searchData(name, count);
         }
 
         adapter = new SearchAdapter(this);
         adapter.setLoadMoreListener(this);
+
         rv_result.setLayoutManager(new LinearLayoutManager(this))
                 .setAdapter(adapter)
-                .setIsAllowedRefresh(false);
+                .setIsAllowedRefresh(true)
+                .setOnRefreshListener(this);
+
         adapter.setOnItemClickListener((view,i)->{
             SearchBean.ResultBean.ListBean b = adapter.getData().get(i);
             Intent intent1 = new Intent();
@@ -132,8 +135,16 @@ public class SearchResultActivity extends BaseMvpActivity<SreachPrenseterImpl>
      * 刷新数据
      */
     @Override
-    public void refreshData() {
-
+    public void refreshData(List<SearchBean.ResultBean.ListBean> data) {
+        showToast("刷新成功");
+        rl_empty.setVisibility(View.GONE);
+        adapter.setData(data);
+        if (!isSearch && !TextUtils.isEmpty(classid) || data.size() >=10) {
+            adapter.openLoadMore();
+        }else {
+            adapter.loadMoreEnd();
+        }
+        start=10;
     }
 
     /**
@@ -148,7 +159,7 @@ public class SearchResultActivity extends BaseMvpActivity<SreachPrenseterImpl>
             return;
         }
         adapter.addData(data);
-        adapter.loadMoreComplete();
+        //adapter.loadMoreComplete();
 
     }
 
@@ -169,6 +180,11 @@ public class SearchResultActivity extends BaseMvpActivity<SreachPrenseterImpl>
         start += 10;
     }
 
+    @Override
+    public void onRefresh() {
+        mPresenter.refreshData(name, 10);
+        rv_result.setRefresh(false);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

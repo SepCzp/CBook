@@ -50,7 +50,6 @@ public abstract class BaseAdapter<T, VM extends BaseViewHolder> extends Recycler
         this(0, data);
     }
 
-
     @Override
     public void onAttachedToRecyclerView(final RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
@@ -163,11 +162,11 @@ public abstract class BaseAdapter<T, VM extends BaseViewHolder> extends Recycler
 
     /**
      * 自动刷新 调用接口
-     *
      * @param position
      */
     private void autoLoadMore(int position) {
-        if (loadMore.getState() == LoadMoreView.FAIL_STATE || loadMore.getState() == LoadMoreView.END_STATE) {
+        //
+        if (loadMore.getState() == LoadMoreView.FAIL_STATE || loadMore.getState() == LoadMoreView.OVER_STATE) {
             return;
         }
         if (getLoadMorePosition() == 0) {
@@ -192,6 +191,7 @@ public abstract class BaseAdapter<T, VM extends BaseViewHolder> extends Recycler
     /**
      * 加载完成
      */
+    @Deprecated
     public void loadMoreComplete() {
         loadMore.setState(LoadMoreView.OTHER_STATE);
         notifyItemChanged(getLoadMorePosition());
@@ -209,7 +209,7 @@ public abstract class BaseAdapter<T, VM extends BaseViewHolder> extends Recycler
      * 加载完成 没有数据
      */
     public void loadMoreEnd() {
-        loadMore.setState(LoadMoreView.END_STATE);
+        loadMore.setState(LoadMoreView.OVER_STATE);
         notifyItemChanged(getLoadMorePosition());
     }
 
@@ -222,7 +222,7 @@ public abstract class BaseAdapter<T, VM extends BaseViewHolder> extends Recycler
     }
 
     /**
-     * 关闭LoadMoreView中的功能
+     * 关闭加载的功能
      */
     public void closeLoadMoreFeatures() {
         loadMore.setState(LoadMoreView.OTHER_STATE);
@@ -389,6 +389,9 @@ public abstract class BaseAdapter<T, VM extends BaseViewHolder> extends Recycler
         footerView.removeViewAt(index);
     }
 
+    /**
+     * @return
+     */
     private int getLoadMoreSeat() {
         int count = 0;
         if (isOpenLoad) {

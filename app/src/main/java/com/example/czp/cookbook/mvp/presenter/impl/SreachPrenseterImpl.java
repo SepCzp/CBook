@@ -25,7 +25,6 @@ public class SreachPrenseterImpl extends BasePrenseterImpl<RefreshDataView> impl
 
     @Override
     public void searchData(String name, int num) {
-
         rxManager.register(NetWork.createApi().getSearchData(name, num, Constan.APPKEY)
                 .compose(RxManager.<HttpMsg<SearchBean>>rxSchedulerHelper())
                 .subscribe(new Consumer<HttpMsg<SearchBean>>() {
@@ -59,6 +58,25 @@ public class SreachPrenseterImpl extends BasePrenseterImpl<RefreshDataView> impl
                     @Override
                     public void accept(@NonNull Throwable throwable) throws Exception {
                         mView.loadMoreError(throwable.getMessage());
+                    }
+                }));
+    }
+
+    @Override
+    public void refreshData(String name, int num) {
+        rxManager.register(NetWork.createApi().getSearchData(name, num, Constan.APPKEY)
+                .compose(RxManager.<HttpMsg<SearchBean>>rxSchedulerHelper())
+                .subscribe(new Consumer<HttpMsg<SearchBean>>() {
+                    @Override
+                    public void accept(@NonNull HttpMsg<SearchBean> msg) throws Exception {
+                        if(msg.result.msg.equals("ok")){
+                            mView.refreshData(msg.result.result.list);
+                        }
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(@NonNull Throwable throwable) throws Exception {
+                        mView.errorToast(throwable.getMessage());
                     }
                 }));
     }
